@@ -1,0 +1,35 @@
+//
+//  FilterOption.h
+//  Yelp
+//
+//  Created by Milan Amin on 6/19/14.
+//  Copyright (c) 2014 Milan Amin. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+#define BEST_MATCHED @"Best matched"
+#define DISTANCE @"Distance"
+#define HIGHEST_RATED @"Highest rated"
+
+typedef enum {
+    sortModeBestMatched = 0,
+    sortModeDistance = 1,
+    sortModeHighestRated = 2
+} sortMode;
+
+@interface FilterOption : NSObject
+
+@property (nonatomic, strong) NSString * term;
+@property (nonatomic, strong) NSString * location;
+@property (nonatomic) double latitude;
+@property (nonatomic) double longitude;
+@property (nonatomic) int radiusFilter;
+@property (nonatomic) sortMode sortFilter;
+@property (nonatomic) BOOL dealsFilter;
+@property (nonatomic, strong) NSMutableArray * categories;
+
++ (NSDictionary *)dictionaryWithFilterOption:(FilterOption *)filterOption;
+- (NSString *)categoryFilterString;
+
+@end
